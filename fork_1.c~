@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<sys/types.h>
+#include<sys/wait.h>
+#include<unistd.h>
+
+int main()
+{
+	int n,mypid, parpid;
+	
+	printf("Parent: n = "); scanf("%d", &n);
+	
+	/* child creation */
+	if( fork())
+	{
+		mypid=getpid();
+		parpid=getppid();
+		printf('Parent: PID = %u, PPI
+	
+}
+
