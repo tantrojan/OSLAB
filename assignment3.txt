@@ -1,0 +1,31 @@
+Question 1:
+Write a C program to implement the following game. 
+The Parent program P first creates two pipes and then spawns two child processes C and D. One of the two pipes is meant for communication between P and C, and next one between P and D. Now a loop runs as follows, in each iteration (also called as Round) P first randomly chooses one of the two flags, min and max. The choice randomly varies from one iteration to another. Each of the two child processes C and D generates a random positive integer and sends that to P via its pipe. P reads the two integers, let these be c and d. If P has chosen min then the child who sent the smaller of c and d gets one point. If P has chosen max then the sender of the larger of c and d will get one point. If c is equal to d the round is ignored. The child process who first obtains 10 points wins the game. When the game ends, P sends a user defined signal to both C and D, and the child processes exits after handling the signals (In order to know who was the winner). After C and D exits the parent process P also exits.
+During each iteration of the game P should print appropriate messages like P's choice of the flag, the integers received from C and D, which child gets the point, the current score of C and D). In order to the let the user know how the game is going on.
+NAME this program as childsGame.c
+
+Question 2:
+In this assignment, you start writing a command interpreter {shell}. You will have to compile this.
+The shell will give a prompt for the user to type in a command from a set of commands. First take the command, execute it and then give the prompt back for the next command.
+
+Your program should do the following:			// Name this program myshell.c
+-> Give the prompt "myshell>" for the user to type in a command.
+-> Implement the following building commands.
+	-> cd <dir>: This command changes the directory to "dir".
+	-> pwd: This command prints the current directory.
+	-> mkdir <dir>: This command creates a directory "dir".
+	-> rmdir <dir>: This command removes a directory "dir".
+	-> ls: This command lists the files present in the current directory.
+	-> exit: This exits the shell.
+
+
+SYSTEM CALLS :
+cd - csdir
+pwd - getcwd
+mkdir - mkdir
+rmdir - rmdir
+ls - readdir
+exit - exit
+
+Any other command typed at the prompt should be executed as if it is the name of an executable file. For example, typing a.out should execute the file a.out. The file can be in the current directory or in any other directories specified by the path environment variable. Use this getenv().
+The executable file should be executed after creating a new process and then executing the file onto it. The parent process should wait for the file to finish execution and then go on to read the next command to the user. The executable can except any arbitrary number of command line parameters. 

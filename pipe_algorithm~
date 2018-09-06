@@ -1,0 +1,10 @@
+1. Process call and parent waits for child and child continues.
+2. Child creates a pipe.
+3. Child then forks.
+4. In the child created by 2nd fork (grandchild), standard output is coupled to the right end of the pipe using "dup2". { dup2(p[1],1); }
+5. Excess file descriptors are closed. { close(p[0]); close(p[1]); }
+6. Program com1 is executed. { execu(______); }
+7. In the child of first fork, standard input is coupled to the read end of the pipe using "dup2" call.
+8. Excess file descriptors are closed. { close(p[0]); close(p[1]); }
+9. Program com2 is executed.
+
